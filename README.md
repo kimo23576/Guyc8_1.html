@@ -12,21 +12,17 @@
   <!-- Chart.js (إذا دعت الحاجة) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    /* إعدادات الألوان الجديدة – ألوان زاهية وفاخرة */
+    /* إعدادات الألوان والخطوط – ألوان داكنة فاخرة */
     :root {
-      --primary-color: #FFFFFF;           /* أبيض */
-      --secondary-color: #001F3F;         /* كحلي داكن */
-      --accent-color: #FFD700;            /* ذهبي */
-      --bg-color: #F8F8FF;                /* خلفية فاتحة */
-      --section-bg: linear-gradient(135deg, #FFFFFF, #F0F0F0); /* درجات الأبيض والرمادي الفاتح */
+      --primary-color: #1B2631;
+      --secondary-color: #212F3D;
+      --accent-color: #F1C40F;
+      --bg-color: #1B2631;
+      --section-bg: linear-gradient(135deg, #2E4053, #1B2631);
       --section-border: var(--accent-color);
-      --text-color: #000000;              /* أسود */
-      --input-bg: #EDEDED;                /* رمادي فاتح */
+      --text-color: #ECF0F1;
+      --input-bg: #2C3E50;
       --animation-speed: 0.8s;
-      /* ألوان إضافية للتفاصيل */
-      --navy-color: #001F3F;
-      --purple-color: #6A0DAD;
-      --grey-color: #808080;
     }
     * {
       box-sizing: border-box;
@@ -42,16 +38,16 @@
       overflow-x: hidden;
       padding-bottom: 100px;
     }
-    /* تأثير فقاعات متحركة خفيفة في الخلفية */
+    /* تأثير فقاعات متحركة في الخلفية */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255,215,0,0.25) 1px, transparent 1px);
+      background: radial-gradient(circle, rgba(241,196,15,0.25) 1px, transparent 1px);
       background-size: 40px 40px;
-      opacity: 0.4;
+      opacity: 0.3;
       z-index: -2;
       animation: moveBubbles 30s linear infinite;
     }
@@ -64,23 +60,23 @@
       max-width: 1400px;
       margin: 40px auto;
       padding: 30px;
-      background: var(--section-bg);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
       position: relative;
       overflow: hidden;
     }
     /* الهيدر */
     .header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: var(--text-color);
+      color: #fff;
       padding: 3rem 2rem;
       text-align: center;
       border-radius: 20px;
       margin-bottom: 20px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
       animation: slideIn var(--animation-speed) ease-out;
     }
     .header::after {
@@ -103,7 +99,7 @@
     }
     .header h1 { font-size: 3.4rem; margin-bottom: 0.5rem; }
     .header h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-    .header a { color: var(--accent-color); text-decoration: none; font-weight: bold; }
+    .header a { color: #FFD700; text-decoration: none; font-weight: bold; }
     .reference-number {
       background: var(--accent-color);
       padding: 1rem 2rem;
@@ -111,22 +107,22 @@
       margin-top: 1.5rem;
       display: inline-block;
       font-weight: 700;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
     /* شريط الأخبار المتحرك (Ticker) */
     .news-ticker {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      background: linear-gradient(135deg, #212F3D, #1B2631);
       border: 2px solid var(--accent-color);
       border-radius: 10px;
       overflow: hidden;
       white-space: nowrap;
       padding: 10px 20px;
       margin-bottom: 30px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     }
     .news-ticker .ticker-content {
       display: inline-block;
-      /* دورة 3 دقائق = 180 ثانية */
+      /* الدورة 3 دقائق = 180 ثانية */
       animation: tickerScroll 180s linear infinite;
     }
     @keyframes tickerScroll {
@@ -146,7 +142,7 @@
     }
     /* الأقسام العامة */
     .section {
-      background: linear-gradient(135deg, #FDFEFE, #F8F9F9);
+      background: linear-gradient(135deg, #2C3E50, #1B2631);
       border-radius: 15px;
       padding: 2.5rem;
       margin-bottom: 25px;
@@ -172,33 +168,33 @@
     }
     .section-title i { font-size: 2rem; }
     .section-intro {
-      background: linear-gradient(135deg, #FBFCFC, #F2F3F4);
+      background: linear-gradient(135deg, #34495E, #2C3E50);
       padding: 1.8rem;
       border-radius: 10px;
       margin-bottom: 2rem;
       border-left: 4px solid var(--accent-color);
       font-size: 1.1rem;
       line-height: 1.6;
-      color: var(--text-color);
+      color: #ECF0F1;
     }
     .input-group { margin-bottom: 2rem; }
     label { margin-bottom: 0.8rem; font-weight: bold; color: var(--accent-color); }
     input, select, textarea {
       width: 100%;
       padding: 1rem;
-      border: 2px solid var(--grey-color);
+      border: 2px solid #555;
       border-radius: 8px;
       font-size: 1.1rem;
       transition: all 0.3s ease;
       margin-bottom: 1rem;
       background: var(--input-bg);
-      color: var(--text-color);
+      color: #ECF0F1;
     }
     input:focus, select:focus, textarea:focus { border-color: var(--accent-color); outline: none; }
     .dynamic-list { margin: 1.5rem 0; }
     .item-card {
-      background: #FDFEFE;
-      border: 2px solid var(--grey-color);
+      background: #212F3D;
+      border: 2px solid #555;
       padding: 1.5rem;
       margin: 10px 0;
       border-radius: 10px;
@@ -211,7 +207,7 @@
     }
     .add-btn, .btn {
       background: var(--primary-color);
-      color: var(--text-color);
+      color: #fff;
       border: 2px double var(--accent-color);
       padding: 1rem 2rem;
       border-radius: 10px;
@@ -238,7 +234,7 @@
     .remove-btn:hover { transform: scale(1.1); }
     .total-box {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: var(--text-color);
+      color: #fff;
       padding: 2rem;
       border-radius: 15px;
       text-align: center;
@@ -251,19 +247,19 @@
       100% { transform: scale(1); }
     }
     .legal-references {
-      background: linear-gradient(135deg, #FDFEFE, #F8F9F9);
+      background: linear-gradient(135deg, #2C3E50, #212F3D);
       padding: 2rem;
       border-radius: 12px;
       margin-top: 3rem;
       border: 2px dashed var(--accent-color);
       font-size: 1rem;
       line-height: 1.6;
-      color: var(--text-color);
+      color: #ECF0F1;
     }
     /* تحسين الفوتر */
     .footer {
       background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: var(--text-color);
+      color: #fff;
       padding: 2rem;
       text-align: center;
       border-radius: 15px;
@@ -271,11 +267,11 @@
       position: relative;
       overflow: hidden;
       border: 2px solid var(--accent-color);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
     }
     .footer .contact-box {
       display: inline-block;
-      background: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.3);
       padding: 10px 20px;
       margin: 5px;
       border-radius: 25px;
@@ -317,7 +313,7 @@
     }
     .actions button {
       background: var(--primary-color);
-      color: var(--text-color);
+      color: #fff;
       border: 2px double var(--accent-color);
       padding: 1rem 2rem;
       border-radius: 10px;
@@ -334,7 +330,7 @@
     }
     /* أقسام إضافية: دليل المستخدم، إدارة ملفات المطالبات، الوثائق، FAQ */
     .extra-section {
-      background: linear-gradient(135deg, #FFFFFF, #F8F8F8);
+      background: linear-gradient(135deg, #1B2631, #212F3D);
       border-radius: 15px;
       padding: 2.5rem;
       margin-bottom: 25px;
@@ -342,29 +338,30 @@
       position: relative;
       overflow: hidden;
       animation: fadeIn 0.8s ease-out;
-      color: var(--text-color);
+      color: #ECF0F1;
     }
     .extra-section .section-title {
       color: var(--accent-color);
       border-bottom: 2px solid var(--accent-color);
     }
     .extra-section .section-intro {
-      background: linear-gradient(135deg, #FDFEFE, #F2F2F2);
+      background: linear-gradient(135deg, #34495E, #2C3E50);
       padding: 1.8rem;
       border-radius: 10px;
       margin-bottom: 2rem;
       border-left: 4px solid var(--accent-color);
       font-size: 1.1rem;
       line-height: 1.6;
+      color: #ECF0F1;
     }
     /* قسم دليل المستخدم */
     .user-guide {
-      background: linear-gradient(135deg, #FFFFFF, #F8F8F8);
+      background: linear-gradient(135deg, #2C3E50, #1B2631);
       border-radius: 15px;
       padding: 2rem;
       margin-bottom: 25px;
       border: 2px solid var(--accent-color);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
     }
     .user-guide h2 {
       color: var(--accent-color);
@@ -378,19 +375,19 @@
     }
     /* قسم الوثائق والمستندات والدلائل */
     .documents-section {
-      background: linear-gradient(135deg, #FFFFFF, #F8F8F8);
+      background: linear-gradient(135deg, #2C3E50, #1B2631);
       border-radius: 15px;
       padding: 2rem;
       margin-bottom: 25px;
       border: 2px solid var(--accent-color);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
     }
     .documents-section h2 {
       color: var(--accent-color);
       margin-bottom: 1rem;
     }
     .documents-section .section-intro {
-      background: linear-gradient(135deg, #FDFEFE, #F2F2F2);
+      background: linear-gradient(135deg, #34495E, #2C3E50);
       padding: 1.5rem;
       border-radius: 10px;
       margin-bottom: 1rem;
@@ -406,14 +403,14 @@
       width: 100%;
       margin-bottom: 10px;
       background: var(--input-bg);
-      color: var(--text-color);
-      border: 2px solid var(--grey-color);
+      color: #ECF0F1;
+      border: 2px solid #555;
       padding: 1rem;
       border-radius: 8px;
     }
     .documents-section .approve-btn {
       background: var(--primary-color);
-      color: var(--text-color);
+      color: #fff;
       border: 2px double var(--accent-color);
       padding: 1rem 2rem;
       border-radius: 10px;
@@ -429,12 +426,12 @@
     }
     /* قسم الأسئلة الشائعة (FAQ) */
     .faq-section {
-      background: linear-gradient(135deg, #FFFFFF, #F8F8F8);
+      background: linear-gradient(135deg, #2C3E50, #1B2631);
       border-radius: 15px;
       padding: 2rem;
       margin-bottom: 25px;
       border: 2px solid var(--accent-color);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
     }
     .faq-section h2 {
       color: var(--accent-color);
@@ -586,11 +583,7 @@
       </div>
       <div class="section-intro">
         <p>
-          يتم تقسيم الأضرار إلى ثلاث مجموعات: 
-          <strong>أولاً: الأضرار المباشرة</strong> (9 أقسام)، 
-          <strong>ثانياً: الأضرار غير المباشرة</strong> (6 أقسام)، 
-          <strong>ثالثاً: أضرار أخرى</strong> (قسم واحد).<br>
-          لكل قسم شرح تعريفي، مثال توضيحي، طريقة احتساب والمرجع القانوني، مع إمكانية إضافة وحذف البنود وعرض النتيجة بالريال والدولار.
+          يتم تقسيم الأضرار إلى ثلاث مجموعات: المباشرة، غير المباشرة، وأضرار أخرى. لكل نوع قسم خاص به يحتوي على شرح تعريفي، مثال، طريقة الاحتساب والمرجع القانوني، مع إمكانية إضافة وحذف البنود وحساب النتيجة بالريال والدولار.
         </p>
       </div>
       
@@ -603,7 +596,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب أضرار الأصول الثابتة (مثل المباني، المعدات، الآلات، والأدوات) بناءً على تكلفة الاستبدال أو الإصلاح مع تطبيق نسب الإهلاك.<br>
+            تُحسب أضرار الأصول الثابتة (مثل المباني، المعدات، الآلات، والأدوات) بناءً على تكلفة الاستبدال أو الإصلاح مع تطبيق نسب الإهلاك. <br>
             <strong>مثال:</strong> إذا دُمّرت منشأة بنسبة 80%، يُحسب التعويض بناءً على 80% من القيمة السوقية.<br>
             <strong>المرجع القانوني:</strong> معايير RICS وFIDIC.
           </p>
@@ -735,8 +728,8 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب الأضرار المالية والتدفقات النقدية (مثل فقدان الإيرادات والدفعات المتأخرة) بناءً على التحليل المالي للبيانات السابقة.<br>
-            <strong>مثال:</strong> إذا توقفت الدفعات النقدية لشهر، يُحسب التعويض بناءً على الإيرادات المفقودة.<br>
+            تُحسب الأضرار المالية والتدفقات النقدية (مثل فقدان الإيرادات والدفعات المتأخرة) بناءً على التحليل المالي للبيانات السابقة. <br>
+            <strong>مثال:</strong> إذا توقفت الدفعات النقدية لشهر، يُحسب التعويض وفقًا للإيرادات المفقودة.<br>
             <strong>المرجع القانوني:</strong> IAS 37.
           </p>
         </div>
@@ -776,7 +769,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب الخسائر التشغيلية الناتجة عن توقف العمليات وتأخير تنفيذ المشاريع وفقاً للتكاليف الإضافية والإيرادات المفقودة.<br>
+            تُحسب الخسائر التشغيلية الناتجة عن توقف العمليات وتأخير تنفيذ المشاريع وفقاً للتكاليف الإضافية والإيرادات المفقودة. <br>
             <strong>مثال:</strong> إذا توقف الإنتاج لمدة 2 شهر، يُحسب التعويض بناءً على خسائر الإنتاج.<br>
             <strong>المرجع القانوني:</strong> معايير FIDIC.
           </p>
@@ -817,7 +810,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسائر تأخر صرف المستحقات بناءً على الإيرادات المفقودة والتكاليف الإضافية مثل الفوائد البنكية.<br>
+            تُحسب خسائر تأخر صرف المستحقات بناءً على الإيرادات المفقودة والتكاليف الإضافية مثل الفوائد البنكية. <br>
             <strong>مثال:</strong> إذا تأخرت المدفوعات لمدة 3 أشهر، يُحسب التعويض بناءً على الخسائر الشهرية.<br>
             <strong>المرجع القانوني:</strong> معايير البنك الدولي والأمم المتحدة.
           </p>
@@ -858,9 +851,9 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب الأضرار المؤسسية (مثل فقدان الثقة وتدهور العلاقات الإدارية) بناءً على تقييم الأثر على السوق والعلاقات. <br>
+            تُحسب الأضرار المؤسسية (مثل فقدان الثقة والسمعة وتدهور العلاقات الإدارية) بناءً على تقييمات داخلية وخارجية. <br>
             <strong>مثال:</strong> إذا انخفضت سمعة الشركة مما أدى إلى فقدان العملاء بنسبة 40%.<br>
-            <strong>المرجع القانوني:</strong> القوانين التجارية والمعايير الدولية.
+            <strong>المرجع القانوني:</strong> معايير الشركات والقوانين التجارية.
           </p>
         </div>
         <div class="dynamic-list" id="institutionalDamages">
@@ -895,11 +888,11 @@
       <div class="section" id="legalClaimsLosses">
         <div class="section-title">
           <i class="fas fa-gavel"></i>
-          <h2>خسائر المطالبة والمتابعة القانونية</h2>
+          <h2>خسائر المطالبة بالتعويضات والمتابعة القانونية</h2>
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسائر المطالبة بالتعويضات (المصاريف القانونية، تكاليف المحامين، التأخير في الحصول على التعويض) بناءً على تقديرات التكاليف القانونية والإجرائية. <br>
+            تُحسب خسائر المطالبة بالتعويضات والمتابعة القانونية (المصاريف القانونية، تكاليف المحامين، التأخير في الحصول على التعويض) بناءً على تقديرات التكاليف القانونية والإجرائية. <br>
             <strong>مثال:</strong> إذا بلغت المصاريف القانونية 20% من قيمة المطالبة.<br>
             <strong>المرجع القانوني:</strong> القوانين التجارية والمحاكم.
           </p>
@@ -940,7 +933,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب تكاليف إعادة التأهيل والتشغيل والتدريب للكوادر البشرية بناءً على تكلفة البرامج التدريبية ومصاريف إعادة التأهيل.<br>
+            تُحسب تكاليف إعادة التأهيل والتشغيل والتدريب للكوادر البشرية بناءً على تكلفة البرامج التدريبية ومصاريف إعادة التأهيل. <br>
             <strong>مثال:</strong> إذا بلغت تكلفة التدريب 15% من القيمة الإجمالية للكوادر المتأثرة.<br>
             <strong>المرجع القانوني:</strong> معايير إعادة التأهيل الدولية والقوانين المحلية.
           </p>
@@ -982,7 +975,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسائر تعطيل الإنتاج والتأخير بناءً على خسائر الإيرادات المتوقعة وتأثير التأخير على العمليات التشغيلية.<br>
+            تُحسب خسائر تعطيل الإنتاج والتأخير بناءً على خسائر الإيرادات المتوقعة وتأثير التأخير على العمليات التشغيلية. <br>
             <strong>مثال:</strong> إذا توقف الإنتاج لمدة 2 أشهر، يُحسب التعويض بناءً على الإيرادات المفقودة.<br>
             <strong>المرجع القانوني:</strong> معايير البنك الدولي.
           </p>
@@ -1023,9 +1016,9 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسارة القدرة التنافسية (فقدان العملاء والشركاء وتدهور السمعة) بناءً على تقييم تأثيرها على الإيرادات وحصة السوق.<br>
+            تُحسب خسارة القدرة التنافسية (فقدان العملاء والشركاء وتدهور السمعة) بناءً على تقييم الأثر على السوق والإيرادات المستقبلية. <br>
             <strong>مثال:</strong> إذا انخفضت حصة الشركة السوقية بنسبة 30% بسبب فقدان العملاء.<br>
-            <strong>المرجع القانوني:</strong> القوانين التجارية والمعايير الدولية.
+            <strong>المرجع القانوني:</strong> القوانين التجارية.
           </p>
         </div>
         <div class="dynamic-list" id="competitiveLoss">
@@ -1064,7 +1057,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب الأضرار المعنوية والنفسية والصحية (مثل الإجهاد النفسي، فقدان الثقة والتأثير الصحي) وفقًا للتقديرات العلاجية والنفسية المعتمدة.<br>
+            تُحسب الأضرار المعنوية والنفسية والصحية (مثل الإجهاد النفسي، فقدان الثقة، وتأثيرها الصحي) بناءً على التقديرات العلاجية والنفسية. <br>
             <strong>مثال:</strong> إذا تسبب فقدان موظف رئيسي في تأثير نفسي على باقي الكوادر بنسبة 25%.<br>
             <strong>المرجع القانوني:</strong> معايير الأمم المتحدة والقوانين المحلية.
           </p>
@@ -1105,7 +1098,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب الأضرار التكنولوجية أو البرمجية (مثل فقدان البيانات أو توقف الأنظمة الإلكترونية) بناءً على تكلفة استعادة الأنظمة وخسارة الإنتاجية.<br>
+            تُحسب الأضرار التكنولوجية أو البرمجية (مثل فقدان البيانات أو توقف الأنظمة الإلكترونية) بناءً على تكلفة استعادة الأنظمة وخسارة الإنتاجية. <br>
             <strong>مثال:</strong> إذا توقف نظام المعلومات لمدة 2 شهر، يتم احتساب تكلفة استعادة البيانات والتأثير على الإنتاج.<br>
             <strong>المرجع القانوني:</strong> معايير الشركات والتكنولوجيا.
           </p>
@@ -1146,7 +1139,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسارة العملاء والشركاء وتدهور السمعة الاعتبارية للشركة بناءً على تقييم تأثيرها على الإيرادات وحصة السوق.<br>
+            تُحسب خسارة العملاء والشركاء وتدهور السمعة الاعتبارية للشركة بناءً على تقييم تأثيرها على الإيرادات وحصة السوق. <br>
             <strong>مثال:</strong> إذا انخفضت حصة السوق بنسبة 30% بسبب تراجع السمعة.<br>
             <strong>المرجع القانوني:</strong> القوانين التجارية والمعايير الدولية.
           </p>
@@ -1187,7 +1180,7 @@
         </div>
         <div class="section-intro">
           <p>
-            تُحسب خسارة الخطط المستقبلية والاستثمارية بناءً على التقديرات المالية للمشاريع المستقبلية وفقدان فرص النمو.<br>
+            تُحسب خسارة الخطط المستقبلية والاستثمارية بناءً على التقديرات المالية للمشاريع المستقبلية المتوقعة وفقدان فرص النمو. <br>
             <strong>مثال:</strong> إذا تأثرت خطط استثمارية بنسبة 25%.<br>
             <strong>المرجع القانوني:</strong> معايير تقييم الاستثمارات.
           </p>
@@ -1412,7 +1405,59 @@
     </div>
     
     <!-- قسم الأسئلة الشائعة (FAQ) -->
-    <div class="extra-section faq-section" id="faqSection">
+    
+<!-- الدليل المرجعي القانوني لتعويض الأعيان المدنية وشركات المقاولات المتضررة -->
+<div class="extra-section" id="legalReference">
+  <div class="section-title">
+    <i class="fas fa-balance-scale"></i>
+    <h2>الدليل المرجعي القانوني لتعويض الأعيان المدنية وشركات المقاولات المتضررة</h2>
+  </div>
+  <div class="section-intro">
+    <h3>القوانين والتشريعات الدولية ذات الصلة</h3>
+
+    <h4>1. اتفاقيات جنيف لعام 1949 والبروتوكولات الإضافية</h4>
+    <ul>
+      <li><strong>اتفاقية جنيف الرابعة (1949):</strong> تحظر استهداف الأعيان المدنية وتضمن التعويضات عن الأضرار الناجمة عن النزاعات المسلحة.</li>
+      <li><strong>البروتوكول الإضافي الأول (1977):</strong> يؤكد على حماية الممتلكات المدنية وضمان التعويضات في حالات الضرر.</li>
+    </ul>
+
+    <h4>2. النظام الأساسي للمحكمة الجنائية الدولية (اتفاقية روما 1998)</h4>
+    <ul>
+      <li><strong>المادة 8:</strong> تعتبر استهداف المنشآت المدنية جريمة حرب تستوجب المساءلة والتعويض.</li>
+      <li><strong>المادة 75:</strong> تنص على حق الضحايا في التعويض العادل وإعادة التأهيل.</li>
+    </ul>
+
+    <h4>3. قرارات الأمم المتحدة ذات الصلة</h4>
+    <ul>
+      <li><strong>قرار مجلس الأمن رقم 687 (1991):</strong> فرض تعويضات على العراق عن الأضرار التي لحقت بالكويت، مما يشكل سابقة قانونية لتعويضات الحروب.</li>
+      <li><strong>قرار مجلس الأمن رقم 2175 (2014):</strong> يدعو إلى حماية الأعيان المدنية والبنى التحتية من آثار النزاعات المسلحة.</li>
+    </ul>
+
+    <h4>4. مبادئ الأمم المتحدة بشأن التعويضات وإعادة التأهيل للضحايا</h4>
+    <p>تؤكد على حق الضحايا في الحصول على تعويضات مادية ومعنوية تشمل إعادة الإعمار والاسترداد المالي.</p>
+
+    <h4>5. القوانين الوطنية الخاصة بالتعويضات (في حالة توفرها)</h4>
+    <p>أي قوانين محلية تنظم تعويضات الأضرار في اليمن، مثل القوانين المدنية والتجارية ذات الصلة بالتعويضات عن الأضرار والخسائر.</p>
+  </div>
+</div>
+
+<!-- الختام والتوصيات -->
+<div class="extra-section" id="conclusion">
+  <div class="section-title">
+    <i class="fas fa-check-circle"></i>
+    <h2>الختام والتوصيات</h2>
+  </div>
+  <div class="section-intro">
+    <ul>
+      <li>على المقاولين توثيق كل الأضرار فور حدوثها لضمان استحقاق التعويض.</li>
+      <li>يجب تقديم المطالبات وفقًا للمعايير القانونية الدولية والمحلية.</li>
+      <li>ينصح بالاستعانة بمحامين وخبراء ماليين لرفع الدعاوى بفعالية.</li>
+      <li>يمكن اللجوء إلى التحكيم الدولي في حال تعذر الحصول على تعويض محليًا.</li>
+    </ul>
+    <p><strong>هذا الدليل يقدم خارطة طريق شاملة تساعد المقاولين اليمنيين في تقديم مطالبات تعويض ناجحة وفق الأطر القانونية الدولية.</strong></p>
+  </div>
+</div>
+<div class="extra-section faq-section" id="faqSection">
       <h2>الأسئلة الشائعة</h2>
       <div class="faq-item">
         <h3 onclick="toggleFaq(this)">1. ما هي الخطوات الأساسية لتوثيق الأضرار؟</h3>
@@ -1556,8 +1601,8 @@
       </div>
       <p>© 2025 الاتحاد العام للمقاولين اليمنيين. جميع الحقوق محفوظة.</p>
     </div>
-  </div>
   
+ 
   <script>
     'use strict';
     const { jsPDF } = window.jspdf;
@@ -1631,7 +1676,7 @@
           </select>
         `,
         operationalLosses: `
-          <input type="text" placeholder="مثال: توقف عملية الإنتاج">
+          <input type="text" placeholder="مثال: توقف الإنتاج">
           <input type="number" placeholder="المبلغ (ريال)" oninput="calculateSectionTotal('operationalLosses','operationalTotalYER','operationalTotalUSD')">
           <input type="number" placeholder="مدة التأخير (بالأشهر)" oninput="calculateSectionTotal('operationalLosses','operationalTotalYER','operationalTotalUSD')">
           <select class="currency">
@@ -1710,24 +1755,6 @@
             <option value="YER">ريال يمني</option>
             <option value="USD">دولار أمريكي</option>
           </select>
-        `,
-        futurePlansLoss: `
-          <input type="text" placeholder="مثال: تأجيل مشروع استثماري">
-          <input type="number" placeholder="المبلغ (ريال)" oninput="calculateSectionTotal('futurePlansLoss','futurePlansTotalYER','futurePlansTotalUSD')">
-          <input type="number" placeholder="مدة التأثير (بالسنوات)" oninput="calculateSectionTotal('futurePlansLoss','futurePlansTotalYER','futurePlansTotalUSD')">
-          <select class="currency">
-            <option value="YER">ريال يمني</option>
-            <option value="USD">دولار أمريكي</option>
-          </select>
-        `,
-        otherDamages: `
-          <input type="text" placeholder="تفاصيل الضرر">
-          <input type="number" placeholder="المبلغ (ريال)" oninput="calculateSectionTotal('otherDamages','otherTotalYER','otherTotalUSD')">
-          <input type="number" placeholder="مدة الضرر (بالسنوات)" oninput="calculateSectionTotal('otherDamages','otherTotalYER','otherTotalUSD')">
-          <select class="currency">
-            <option value="YER">ريال يمني</option>
-            <option value="USD">دولار أمريكي</option>
-          </select>
         `
       };
       let template = templates[sectionId];
@@ -1758,7 +1785,7 @@
         techDamage: { YER: 'techDamageTotalYER', USD: 'techDamageTotalUSD' },
         reputationLoss: { YER: 'reputationLossTotalYER', USD: 'reputationLossTotalUSD' },
         intangibleDamages: { YER: 'intangibleTotalYER', USD: 'intangibleTotalUSD' },
-        futurePlansLoss: { YER: 'futurePlansTotalYER', USD: 'futurePlansTotalUSD' },
+        delayedPayments: { YER: 'delayedTotalYER', USD: 'delayedTotalUSD' }, // مكرر – يُستخدم سابقاً
         otherDamages: { YER: 'otherTotalYER', USD: 'otherTotalUSD' }
       };
       return isYER ? mapping[sectionId].YER : mapping[sectionId].USD;
@@ -1784,25 +1811,22 @@
     
     // دالة حساب الإجمالي النهائي لجميع الأقسام
     function calculateFinalTotal() {
-      const direct = (
-        parseFloat(document.getElementById('fixedAssetsTotal').textContent) || 0 +
-        parseFloat(document.getElementById('inventoryDamageTotal').textContent) || 0 +
-        parseFloat(document.getElementById('humanTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('financialDirectTotal').textContent) || 0 +
-        parseFloat(document.getElementById('operationalTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('delayedTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('institutionalTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('legalClaimsTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('rehabTotalYER').textContent) || 0
-      );
-      const indirect = (
-        parseFloat(document.getElementById('productionDelayTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('competitiveLossTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('intangibleTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('techDamageTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('reputationLossTotalYER').textContent) || 0 +
-        parseFloat(document.getElementById('futurePlansTotalYER').textContent) || 0
-      );
+      // جمع نتائج جميع الأقسام (يتم جمع النتائج من الأقسام المباشرة وغير المباشرة وأضرار أخرى)
+      const direct = parseFloat(document.getElementById('fixedAssetsTotal').textContent) || 0 +
+                     parseFloat(document.getElementById('inventoryDamageTotal').textContent) || 0 +
+                     parseFloat(document.getElementById('humanTotalYER').textContent) || 0 +
+                     parseFloat(document.getElementById('financialDirectTotal').textContent) || 0 +
+                     parseFloat(document.getElementById('operationalTotalYER').textContent) || 0 +
+                     parseFloat(document.getElementById('delayedTotalYER').textContent) || 0 +
+                     parseFloat(document.getElementById('institutionalTotalYER').textContent) || 0 +
+                     parseFloat(document.getElementById('legalClaimsTotalYER').textContent) || 0 +
+                     parseFloat(document.getElementById('rehabTotalYER').textContent) || 0;
+      const indirect = parseFloat(document.getElementById('productionDelayTotalYER').textContent) || 0 +
+                       parseFloat(document.getElementById('competitiveLossTotalYER').textContent) || 0 +
+                       parseFloat(document.getElementById('intangibleTotalYER').textContent) || 0 +
+                       parseFloat(document.getElementById('techDamageTotalYER').textContent) || 0 +
+                       parseFloat(document.getElementById('reputationLossTotalYER').textContent) || 0 +
+                       parseFloat(document.getElementById('futurePlansTotalYER').textContent) || 0;
       const other = parseFloat(document.getElementById('otherTotalYER').textContent) || 0;
       const grand = direct + indirect + other;
       document.getElementById('finalDirectTotal').textContent = direct.toLocaleString('ar-YE');
@@ -1817,7 +1841,7 @@
     function exportToPDF() {
       const doc = new jsPDF();
       doc.text("الإجمالي النهائي للتعويضات:", 10, 10);
-      doc.text(`بالريال: ${document.getElementById('grandTotal').textContent}`, 10, 20);
+      doc.text(`بالريال اليمني: ${document.getElementById('grandTotal').textContent}`, 10, 20);
       doc.save("الإجمالي_النهائي.pdf");
     }
     function shareForm() {
@@ -1865,5 +1889,3 @@
       setInterval(updateDateTime, 60000);
     });
   </script>
-</body>
-</html>
