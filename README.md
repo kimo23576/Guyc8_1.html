@@ -11,17 +11,120 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <!-- Chart.js (إذا دعت الحاجة) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    /* إعدادات الألوان والخطوط – ألوان داكنة فاخرة */
+  
+<style>
     :root {
-      --primary-color: #1B2631;
-      --secondary-color: #212F3D;
-      --accent-color: #F1C40F;
-      --bg-color: #1B2631;
-      --section-bg: linear-gradient(135deg, #2E4053, #1B2631);
+      --primary-color: #1B2631; /* لون أزرق داكن ملكي */
+      --secondary-color: #212F3D; /* لون أغمق للفخامة */
+      --accent-color: #F1C40F; /* ذهبي ملكي */
+      --bg-color: #F5F0E1; /* خلفية بيج أنيقة */
+      --section-bg: linear-gradient(135deg, #2E4053, #1B2631); /* مزيج ألوان فاخر */
       --section-border: var(--accent-color);
       --text-color: #ECF0F1;
-      --input-bg: #2C3E50;
+      --input-bg: #2C3E50; /* لون المدخلات */
+    }
+
+    :root {
+       /* بني ملكي */
+       /* أسود داكن */
+       /* ذهبي فخم */
+       /* بيج فاتح */
+       /* بيج ذهبي */
+      
+       /* بني راقٍ */
+       /* بيج فاتح */
+      --animation-speed: 0.8s;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .container {
+      background: var(--section-bg);
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      border-bottom: 5px solid var(--accent-color);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .header h1, .header h2 {
+      color: var(--accent-color);
+    }
+
+    .section {
+      background: var(--section-bg);
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      color: var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
+    }
+
+    .input-group label {
+      color: var(--primary-color);
+    }
+
+    input, select, textarea {
+      background: var(--input-bg);
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn {
+      background: var(--primary-color);
+      border: 2px solid var(--accent-color);
+      color: #fff;
+    }
+
+    .btn:hover {
+      background: var(--secondary-color);
+    }
+
+    .footer {
+      background: var(--primary-color);
+      border-top: 5px solid var(--accent-color);
+      color: #fff;
+    }
+
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+        padding: 10px;
+      }
+      .header h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      input, select, textarea {
+        font-size: 1rem;
+        padding: 8px;
+      }
+    }
+</style>
+<style>
+    /* إعدادات الألوان والخطوط – ألوان داكنة فاخرة */
+    :root {
+      
+      
+      
+      
+      
+      
+      
+      
       --animation-speed: 0.8s;
     }
     * {
@@ -60,9 +163,9 @@
       max-width: 1400px;
       margin: 40px auto;
       padding: 30px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: var(--section-bg);
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
       position: relative;
       overflow: hidden;
     }
@@ -482,7 +585,155 @@
       body { font-size: 12pt; background: white !important; }
       .header, .footer, button { display: none !important; }
     }
-  </style>
+  
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+        padding: 10px;
+      }
+      .header h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      input, select, textarea {
+        font-size: 1rem;
+        padding: 8px;
+      }
+    }
+</style>
+<style>
+  #finalSummary table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #2C3E50;
+    color: #F1C40F;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  #finalSummary th, #finalSummary td {
+    border: 2px solid #F1C40F;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  #finalSummary th {
+    background-color: #F1C40F;
+    color: #2C3E50;
+    font-weight: bold;
+  }
+  #finalSummary tbody tr:nth-child(even) {
+    background-color: #34495E;
+  }
+  #finalSummary tbody tr:nth-child(odd) {
+    background-color: #2C3E50;
+  }
+  #finalSummary tr.total-row {
+    font-weight: bold;
+    background-color: #F1C40F;
+    color: #2C3E50;
+    font-size: 1.2rem;
+  }
+  .btn-calculate {
+    background-color: #F1C40F;
+    color: #2C3E50;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  .btn-calculate:hover {
+    background-color: #D4AC0D;
+  }
+  /* تنسيق الجدول في قسم الخلاصة النهائية */
+        #finalSummary table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            table-layout: fixed;
+            /* لجعل الأعمدة متساوية */
+        }
+
+        #finalSummary th,
+        #finalSummary td {
+            border: 1px solid var(--accent-color);
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1rem;
+            overflow: hidden;
+            /* لإخفاء النص الزائد */
+            white-space: nowrap;
+            /* لمنع التفاف النص */
+            text-overflow: ellipsis;
+            /* لإضافة علامة (...) للنص الزائد */
+        }
+
+        #finalSummary th {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        #finalSummary td {
+            color: #FFD700;
+            /* اللون الذهبي للنص */
+        }
+
+        #finalSummary tr.total-row {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* تحديد عرض ثابت للأعمدة (اختياري) */
+        #finalSummary .column-1 {
+            width: 5%;
+        }
+
+        #finalSummary .column-2 {
+            width: 55%;
+        }
+
+        #finalSummary .column-3,
+        #finalSummary .column-4 {
+            width: 20%;
+        }
+</style>
+<script>
+  function calculateFinalSummary() {
+    let totalYER = 0, totalUSD = 0;
+    const sectionIDs = [
+      'fixedAssetsTotal', 'inventoryDamageTotal', 'humanTotalYER', 'financialDirectTotal',
+      'operationalTotalYER', 'delayedTotalYER', 'institutionalTotalYER', 'legalClaimsTotalYER',
+      'rehabTotalYER', 'productionDelayTotalYER', 'competitiveLossTotalYER', 'intangibleTotalYER',
+      'techDamageTotalYER', 'reputationLossTotalYER', 'futurePlansTotalYER', 'otherTotalYER'
+    ];
+    const sectionUSDIDs = [
+      'fixedAssetsTotalUSD', 'inventoryDamageTotalUSD', 'humanTotalUSD', 'financialDirectTotalUSD',
+      'operationalTotalUSD', 'delayedTotalUSD', 'institutionalTotalUSD', 'legalClaimsTotalUSD',
+      'rehabTotalUSD', 'productionDelayTotalUSD', 'competitiveLossTotalUSD', 'intangibleTotalUSD',
+      'techDamageTotalUSD', 'reputationLossTotalUSD', 'futurePlansTotalUSD', 'otherTotalUSD'
+    ];
+
+    sectionIDs.forEach(id => {
+      let value = parseFloat(document.getElementById(id).innerText.replace(/,/g, '')) || 0;
+      totalYER += value;
+    });
+    sectionUSDIDs.forEach(id => {
+      let value = parseFloat(document.getElementById(id).innerText.replace(/,/g, '')) || 0;
+      totalUSD += value;
+    });
+
+    document.getElementById('totalSumYER').innerText = totalYER.toLocaleString();
+    document.getElementById('totalSumUSD').innerText = totalUSD.toLocaleString();
+  }
+</script>
+
 </head>
 <body>
   <div class="container">
@@ -508,7 +759,7 @@
     
     <!-- قسم مقدمة تعريفية -->
     <div class="section">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-info-circle"></i>
         <h2>مقدمة تعريفية</h2>
       </div>
@@ -545,39 +796,60 @@
     
     <!-- إعدادات العملة -->
     <div class="section">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-coins"></i>
         <h2>إعدادات العملة</h2>
       </div>
       <div class="input-group">
-        <label>سعر صرف الدولار (USD) مقابل الريال (YER):</label>
+        <label style="color: #F1C40F;">سعر صرف الدولار (USD) مقابل الريال (YER):</label>
         <input type="number" id="exchangeRate" placeholder="أدخل سعر الصرف" required>
       </div>
     </div>
     
     <!-- البيانات الأساسية -->
     <div class="section">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-building"></i>
         <h2>البيانات الأساسية</h2>
       </div>
       <div class="input-group">
-        <label>اسم الشركة/المؤسسة:</label>
+        <label style="color: #F1C40F;">اسم الشركة/المؤسسة:</label>
         <input type="text" id="companyName" placeholder="أدخل اسم الشركة" required>
       </div>
       <div class="input-group">
-        <label>اسم المقاول المسؤول:</label>
+        <label style="color: #F1C40F;">اسم المقاول المسؤول:</label>
         <input type="text" id="contractorName" placeholder="أدخل اسم المقاول" required>
       </div>
-      <div class="input-group">
-        <label>رقم الهاتف:</label>
+      
+    <div class="input-group">
+      <label style="color: #F1C40F;">رقم السجل التجاري:</label>
+      <input type="text" id="businessRegNumber" placeholder="أدخل رقم السجل التجاري">
+    </div>
+    <div class="input-group">
+      <label style="color: #F1C40F;">نوع النشاط / التخصص:</label>
+      <input type="text" id="businessType" placeholder="أدخل نوع النشاط أو التخصص">
+    </div>
+    <div class="input-group">
+      <label style="color: #F1C40F;">تصنيف الشركة:</label>
+      <input type="text" id="companyClassification" placeholder="أدخل تصنيف الشركة إن وجد">
+    </div>
+    <div class="input-group">
+      <label style="color: #F1C40F;">حجم الشركة:</label>
+      <select id="companySize">
+        <option value="small">شركة صغيرة</option>
+        <option value="medium">شركة متوسطة</option>
+        <option value="large">شركة كبيرة</option>
+      </select>
+    </div>
+<div class="input-group">
+        <label style="color: #F1C40F;">رقم الهاتف:</label>
         <input type="tel" id="phoneNumber" placeholder="أدخل رقم الهاتف" required>
       </div>
     </div>
     
     <!-- قسم حساب الأضرار وأنواعها -->
     <div class="section" id="damageCalculators">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-calculator"></i>
         <h2>قسم حساب الأضرار وأنواعها</h2>
       </div>
@@ -590,7 +862,7 @@
       <!-- (أولاً: الأضرار المباشرة) -->
       <!-- 1. أضرار الأصول الثابتة -->
       <div class="section" id="fixedAssets">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-building"></i>
           <h2>أضرار الأصول الثابتة</h2>
         </div>
@@ -636,7 +908,7 @@
       
       <!-- 2. أضرار المخزون والمواد -->
       <div class="section" id="inventoryDamage">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-box"></i>
           <h2>أضرار المخزون والمواد</h2>
         </div>
@@ -681,7 +953,7 @@
       
       <!-- 3. خسارة الكوادر البشرية -->
       <div class="section" id="humanLosses">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-users"></i>
           <h2>خسارة الكوادر البشرية</h2>
         </div>
@@ -722,7 +994,7 @@
       
       <!-- 4. الأضرار المالية والتدفقات النقدية -->
       <div class="section" id="financialDirect">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-money-bill-wave"></i>
           <h2>الأضرار المالية والتدفقات النقدية</h2>
         </div>
@@ -763,7 +1035,7 @@
       
       <!-- 5. الخسائر التشغيلية -->
       <div class="section" id="operationalLosses">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-cogs"></i>
           <h2>الخسائر التشغيلية</h2>
         </div>
@@ -804,7 +1076,7 @@
       
       <!-- 6. خسائر تأخر صرف المستحقات -->
       <div class="section" id="delayedPayments">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-hourglass-half"></i>
           <h2>خسائر تأخر صرف المستحقات</h2>
         </div>
@@ -845,7 +1117,7 @@
       
       <!-- 7. الأضرار المؤسسية -->
       <div class="section" id="institutionalDamages">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-building"></i>
           <h2>الأضرار المؤسسية</h2>
         </div>
@@ -886,7 +1158,7 @@
       
       <!-- 8. خسائر المطالبة بالتعويضات والمتابعة القانونية والإجرائية -->
       <div class="section" id="legalClaimsLosses">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-gavel"></i>
           <h2>خسائر المطالبة بالتعويضات والمتابعة القانونية</h2>
         </div>
@@ -927,7 +1199,7 @@
       
       <!-- 9. تكاليف إعادة التأهيل والتشغيل والتدريب للكوادر البشرية -->
       <div class="section" id="rehabilitationCosts">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-chalkboard-teacher"></i>
           <h2>تكاليف إعادة التأهيل والتشغيل والتدريب</h2>
         </div>
@@ -969,7 +1241,7 @@
       <!-- (ثانياً: الأضرار غير المباشرة) -->
       <!-- 10. تعطيل الإنتاج والتأخير -->
       <div class="section" id="productionDelay">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-stopwatch"></i>
           <h2>تعطيل الإنتاج والتأخير</h2>
         </div>
@@ -1010,7 +1282,7 @@
       
       <!-- 11. خسارة القدرة التنافسية -->
       <div class="section" id="competitiveLoss">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-chart-line"></i>
           <h2>خسارة القدرة التنافسية</h2>
         </div>
@@ -1051,7 +1323,7 @@
       
       <!-- 12. الأضرار المعنوية والنفسية والصحية -->
       <div class="section" id="intangibleDamages">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-heartbeat"></i>
           <h2>الأضرار المعنوية والنفسية والصحية</h2>
         </div>
@@ -1092,7 +1364,7 @@
       
       <!-- 13. الضرر التكنولوجي أو البرمجي -->
       <div class="section" id="techDamage">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-laptop-code"></i>
           <h2>الضرر التكنولوجي أو البرمجي</h2>
         </div>
@@ -1133,7 +1405,7 @@
       
       <!-- 14. خسارة العملاء والشركاء والسمعة -->
       <div class="section" id="reputationLoss">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-users"></i>
           <h2>خسارة العملاء والسمعة</h2>
         </div>
@@ -1174,7 +1446,7 @@
       
       <!-- 15. خسارة الخطط المستقبلية والاستثمارية -->
       <div class="section" id="futurePlansLoss">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-chart-line"></i>
           <h2>خسارة الخطط المستقبلية والاستثمارية</h2>
         </div>
@@ -1216,7 +1488,7 @@
       <!-- (ثالثاً: أضرار أخرى) -->
       <!-- 16. أضرار أخرى -->
       <div class="section" id="otherDamages">
-        <div class="section-title">
+        <div class="section-title" style="color: #F1C40F;">
           <i class="fas fa-question-circle"></i>
           <h2>أضرار أخرى</h2>
         </div>
@@ -1255,9 +1527,42 @@
       
     </div> <!-- نهاية قسم حساب الأضرار وأنواعها -->
     
-    <!-- قسم إدارة ملفات المطالبات -->
+    
+<!-- الخلاصة النهائية 
+
+<script>
+  function calculateFinalSummary() {
+    let totalYER = 0, totalUSD = 0;
+    const sections = [
+      'fixedAssetsTotal', 'inventoryDamageTotal', 'humanTotalYER', 'financialDirectTotal',
+      'operationalTotalYER', 'delayedTotalYER', 'institutionalTotalYER', 'legalClaimsTotalYER',
+      'rehabTotalYER', 'productionDelayTotalYER', 'competitiveLossTotalYER', 'intangibleTotalYER',
+      'techDamageTotalYER', 'reputationLossTotalYER', 'futurePlansTotalYER', 'otherTotalYER'
+    ];
+    const sectionsUSD = [
+      'fixedAssetsTotalUSD', 'inventoryDamageTotalUSD', 'humanTotalUSD', 'financialDirectTotalUSD',
+      'operationalTotalUSD', 'delayedTotalUSD', 'institutionalTotalUSD', 'legalClaimsTotalUSD',
+      'rehabTotalUSD', 'productionDelayTotalUSD', 'competitiveLossTotalUSD', 'intangibleTotalUSD',
+      'techDamageTotalUSD', 'reputationLossTotalUSD', 'futurePlansTotalUSD', 'otherTotalUSD'
+    ];
+
+    sections.forEach(id => {
+      let value = parseFloat(document.getElementById(id).innerText) || 0;
+      totalYER += value;
+    });
+    sectionsUSD.forEach(id => {
+      let value = parseFloat(document.getElementById(id).innerText) || 0;
+      totalUSD += value;
+    });
+
+    document.getElementById('totalSumYER').innerText = totalYER.toFixed(2);
+    document.getElementById('totalSumUSD').innerText = totalUSD.toFixed(2);
+  }
+</script>
+
+<!-- قسم إدارة ملفات المطالبات -->
     <div class="extra-section" id="claimsManagement">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-folder-open"></i>
         <h2>إدارة ملفات المطالبات</h2>
       </div>
@@ -1276,7 +1581,7 @@
     
     <!-- قسم الوثائق والمستندات والدلائل -->
     <div class="extra-section documents-section" id="documentsSection">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-file-alt"></i>
         <h2>الوثائق والمستندات والدلائل</h2>
       </div>
@@ -1305,26 +1610,142 @@
     </div>
     
     <!-- قسم الخلاصة النهائية -->
-    <div class="section" id="sectionFinal">
-      <div class="section-title">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <h2>الخلاصة النهائية</h2>
-      </div>
-      <div class="total-box" id="finalTotalBox">
-        <p>الإجمالي المباشر: <span id="finalDirectTotal">0</span> ريال</p>
-        <p>الإجمالي غير المباشر: <span id="finalIndirectTotal">0</span> ريال</p>
-        <p>خسائر تأخر الصرف: <span id="finalDelayedTotal">0</span> ريال</p>
-        <p>الأضرار الأخرى: <span id="finalOtherTotal">0</span> ريال</p>
-        <p><strong>الإجمالي الكلي: <span id="grandTotal">0</span> ريال</strong></p>
-        <button class="btn" onclick="calculateFinalTotal()">
-          <i class="fas fa-calculator"></i> حساب الإجمالي النهائي
-        </button>
-      </div>
+    
+    <div class="container">
+        <div class="section" id="finalSummary">
+            <div class="section-title">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h2>الخلاصة النهائية</h2>
+            </div>
+            <div class="section-intro">
+                <p>يوضح الجدول التالي إجمالي الأضرار المحسوبة لكل قسم.</p>
+            </div>
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th class="column-1">رقم البند</th>
+                        <th class="column-2">الوصف</th>
+                        <th class="column-3">المبلغ بالريال </th>
+                        <th class="column-4">المبلغ بالدولار</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>أضرار الأصول الثابتة</td>
+                        <td id="fixedAssetsTotal">0</td>
+                        <td id="fixedAssetsTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>أضرار المخزون</td>
+                        <td id="inventoryDamageTotal">0</td>
+                        <td id="inventoryDamageTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>الكوادر البشرية</td>
+                        <td id="humanTotalYER">0</td>
+                        <td id="humanTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>الأضرار المالية</td>
+                        <td id="financialDirectTotal">0</td>
+                        <td id="financialDirectTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>الخسائر التشغيلية</td>
+                        <td id="operationalTotalYER">0</td>
+                        <td id="operationalTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>خسائر التأخر</td>
+                        <td id="delayedTotalYER">0</td>
+                        <td id="delayedTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>الأضرار المؤسسية</td>
+                        <td id="institutionalTotalYER">0</td>
+                        <td id="institutionalTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>خسائر المطالبة القانونية</td>
+                        <td id="legalClaimsTotalYER">0</td>
+                        <td id="legalClaimsTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>تكاليف التأهيل</td>
+                        <td id="rehabTotalYER">0</td>
+                        <td id="rehabTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>تعطيل الإنتاج</td>
+                        <td id="productionDelayTotalYER">0</td>
+                        <td id="productionDelayTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>خسارة القدرة التنافسية</td>
+                        <td id="competitiveLossTotalYER">0</td>
+                        <td id="competitiveLossTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>الأضرار المعنوية والصحية</td>
+                        <td id="intangibleTotalYER">0</td>
+                        <td id="intangibleTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>الضرر التكنولوجي</td>
+                        <td id="techDamageTotalYER">0</td>
+                        <td id="techDamageTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>خسارة العملاء والسمعة</td>
+                        <td id="reputationLossTotalYER">0</td>
+                        <td id="reputationLossTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>خسارة الخطط المستقبلية</td>
+                        <td id="futurePlansTotalYER">0</td>
+                        <td id="futurePlansTotalUSD">0</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>الأضرار الأخرى</td>
+                        <td id="otherTotalYER">0</td>
+                        <td id="otherTotalUSD">0</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>18</td>
+                        <td>الإجمالي الكلي</td>
+                        <td id="totalSumYER">0</td>
+                        <td id="totalSumUSD">0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="actions">
+                <button class="btn-calculate" onclick="calculateFinalSummary()">
+                    <i class="fas fa-calculator"></i> حساب الإجمالي
+                </button>
+            </div>
+        </div>
+
     </div>
     
     <!-- قسم الدليل الإرشادي الشامل لنيل التعويضات -->
     <div class="extra-section" id="guidelines">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-chalkboard-teacher"></i>
         <h2>الدليل الإرشادي الشامل لنيل التعويضات العادلة عن الأضرار والخسائر في قطاع المقاولات اليمني</h2>
       </div>
@@ -1408,7 +1829,7 @@
     
 <!-- الدليل المرجعي القانوني لتعويض الأعيان المدنية وشركات المقاولات المتضررة -->
 <div class="extra-section" id="legalReference">
-  <div class="section-title">
+  <div class="section-title" style="color: #F1C40F;">
     <i class="fas fa-balance-scale"></i>
     <h2>الدليل المرجعي القانوني لتعويض الأعيان المدنية وشركات المقاولات المتضررة</h2>
   </div>
@@ -1443,7 +1864,7 @@
 
 <!-- الختام والتوصيات -->
 <div class="extra-section" id="conclusion">
-  <div class="section-title">
+  <div class="section-title" style="color: #F1C40F;">
     <i class="fas fa-check-circle"></i>
     <h2>الختام والتوصيات</h2>
   </div>
@@ -1553,7 +1974,7 @@
     
     <!-- قسم الإقرار والموافقة -->
     <div class="section">
-      <div class="section-title">
+      <div class="section-title" style="color: #F1C40F;">
         <i class="fas fa-check-circle"></i>
         <h2>الإقرار والموافقة</h2>
       </div>
@@ -1562,7 +1983,7 @@
           بموجب هذا، أقر بصحة البيانات والمعلومات المدخلة وأوافق على استخدامها لحساب الأضرار والخسائر، وأتعهد بتحمل المسؤولية القانونية عن دقتها.
         </p>
         <div class="input-group">
-          <label>
+          <label style="color: #F1C40F;">
             <input type="checkbox" id="agreement" required> أوافق على صحة البيانات المقدمة.
           </label>
         </div>
@@ -1602,7 +2023,7 @@
       <p>© 2025 الاتحاد العام للمقاولين اليمنيين. جميع الحقوق محفوظة.</p>
     </div>
   
- 
+  
   <script>
     'use strict';
     const { jsPDF } = window.jspdf;
