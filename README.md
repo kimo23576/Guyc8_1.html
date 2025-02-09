@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,8 +12,88 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <!-- Chart.js (إذا دعت الحاجة) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-<style>
+  <style>
+    /* إضافة التصميم الجديد */
+    .login-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .login-form, .signup-form {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--section-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .login-form input, .signup-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--accent-color);
+    }
+    .login-form button, .signup-form button {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-form button:hover, .signup-form button:hover {
+      background: var(--secondary-color);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .file-management, .track-requests {
+      display: none;
+      padding: 2rem;
+    }
+    .file-management table, .track-requests table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .file-management th, .track-requests th {
+      background: var(--primary-color);
+      color: var(--accent-color);
+      padding: 10px;
+      text-align: center;
+    }
+    .file-management td, .track-requests td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--accent-color);
+    }
+    .file-management button, .track-requests button {
+      padding: 5px 10px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .file-management button:hover, .track-requests button:hover {
+      background: var(--secondary-color);
+    }
+ 
     :root {
       --primary-color: #1B2631; /* لون أزرق داكن ملكي */
       --secondary-color: #212F3D; /* لون أغمق للفخامة */
@@ -58,7 +139,88 @@
     .header h1, .header h2 {
       color: var(--accent-color);
     }
-
+    
+    /* إضافة التصميم الجديد */
+    .login-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .login-form, .signup-form {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--section-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .login-form input, .signup-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--accent-color);
+    }
+    .login-form button, .signup-form button {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-form button:hover, .signup-form button:hover {
+      background: var(--secondary-color);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .file-management, .track-requests {
+      display: none;
+      padding: 2rem;
+    }
+    .file-management table, .track-requests table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .file-management th, .track-requests th {
+      background: var(--primary-color);
+      color: var(--accent-color);
+      padding: 10px;
+      text-align: center;
+    }
+    .file-management td, .track-requests td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--accent-color);
+    }
+    .file-management button, .track-requests button {
+      padding: 5px 10px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .file-management button:hover, .track-requests button:hover {
+      background: var(--secondary-color);
+    }
+    
     .section {
       background: var(--section-bg);
       border: 2px solid var(--accent-color);
@@ -762,16 +924,74 @@ function addFuturePlansLoss() {
   <div class="container">
     <!-- الهيدر -->
     <div class="header">
-    <img src="https://guyc-ye.com/wp-content/uploads/2024/05/GUYC-Log33o-copy.png" alt="شعار الاتحاد العام للمقاولين اليمنيين" style="max-height:180px; background: transparent; margin-bottom:10px;">
-    <h1>الإستمارة الذكية لتسجيل الأضرار والخسائر</h1>
-    <h2>قطاع المقاولات اليمني - الاتحاد العام للمقاولين اليمنيين</h2>
-    <!-- باقي محتويات الهيدر -->
-    
+      <img src="https://guyc-ye.com/wp-content/uploads/2024/05/GUYC-Log33o-copy.png" alt="شعار الاتحاد العام للمقاولين اليمنيين" style="max-height:180px; background: transparent; margin-bottom:10px;">
+      <h1>الإستمارة الذكية لتسجيل الأضرار والخسائر</h1>
+      <h2>قطاع المقاولات اليمني - الاتحاد العام للمقاولين اليمنيين</h2>
+      <div class="login-icon" onclick="showLoginForm()">
+        <i class="fas fa-user"></i>
+      </div>
       <div class="reference-number" id="fileNumber"></div>
       <div class="timestamp" id="currentDate"></div>
       <p>زوروا موقعنا: <a href="https://guyc-ye.com/" target="_blank">guyc-ye.com</a></p>
     </div>
-    
+
+    <!-- نموذج تسجيل الدخول -->
+    <div class="overlay" id="overlay" onclick="hideLoginForm()"></div>
+    <div class="login-form" id="loginForm">
+      <h2>تسجيل الدخول</h2>
+      <input type="email" id="loginEmail" placeholder="البريد الإلكتروني">
+      <input type="password" id="loginPassword" placeholder="كلمة المرور">
+      <button onclick="login()">تسجيل الدخول</button>
+      <p onclick="showSignupForm()">إنشاء حساب جديد</p>
+    </div>
+
+    <!-- نموذج إنشاء حساب جديد -->
+    <div class="signup-form" id="signupForm">
+      <h2>إنشاء حساب جديد</h2>
+      <input type="text" id="signupName" placeholder="الاسم">
+      <input type="email" id="signupEmail" placeholder="البريد الإلكتروني">
+      <input type="password" id="signupPassword" placeholder="كلمة المرور">
+      <button onclick="signup()">إنشاء حساب</button>
+      <p onclick="showLoginForm()">لديك حساب؟ تسجيل الدخول</p>
+    </div>
+
+    <!-- قسم إدارة الملفات -->
+    <div class="file-management" id="fileManagement">
+      <h2>إدارة الملفات</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>اسم الملف</th>
+            <th>حالة الملف</th>
+            <th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="fileList">
+          <!-- سيتم ملء هذا الجدول بالملفات المرفوعة -->
+        </tbody>
+      </table>
+      <button onclick="exportToPDF()">تصدير إلى PDF</button>
+    </div>
+
+    <!-- قسم متابعة الطلبات -->
+    <div class="track-requests" id="trackRequests">
+      <h2>متابعة الطلبات</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>رقم الطلب</th>
+            <th>حالة الطلب</th>
+            <th>التاريخ</th>
+          </tr>
+        </thead>
+        <tbody id="requestList">
+          <!-- سيتم ملء هذا الجدول بالطلبات المقدمة -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- باقي المحتوى الأصلي -->
+    <!-- ... -->
     <!-- شريط الأخبار المتحرك (Ticker) -->
     <div class="news-ticker">
       <div class="ticker-content">
@@ -2396,10 +2616,128 @@ function addFuturePlansLoss() {
         answer.style.maxHeight = "0";
       }
     }
-    
+ <script>
+    'use strict';
+    const { jsPDF } = window.jspdf;
+
+    // عرض نموذج تسجيل الدخول
+    function showLoginForm() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('loginForm').style.display = 'block';
+    }
+
+    // إخفاء نموذج تسجيل الدخول
+    function hideLoginForm() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'none';
+    }
+
+    // عرض نموذج إنشاء حساب جديد
+    function showSignupForm() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+    }
+
+    // تسجيل الدخول
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+      if (user) {
+        alert('تم تسجيل الدخول بنجاح');
+        hideLoginForm();
+        showFileManagement();
+      } else {
+        alert('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      }
+    }
+
+    // إنشاء حساب جديد
+    function signup() {
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      users.push({ name, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('تم إنشاء الحساب بنجاح');
+      showLoginForm();
+    }
+
+    // عرض قسم إدارة الملفات
+    function showFileManagement() {
+      document.getElementById('fileManagement').style.display = 'block';
+      document.getElementById('trackRequests').style.display = 'none';
+      loadFiles();
+    }
+
+    // عرض قسم متابعة الطلبات
+    function showTrackRequests() {
+      document.getElementById('fileManagement').style.display = 'none';
+      document.getElementById('trackRequests').style.display = 'block';
+      loadRequests();
+    }
+
+    // تحميل الملفات المرفوعة
+    function loadFiles() {
+      const files = JSON.parse(localStorage.getItem('files')) || [];
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+      files.forEach((file, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${file.name}</td>
+          <td>${file.status}</td>
+          <td>
+            <button onclick="deleteFile(${index})">حذف</button>
+            <button onclick="exportFileToPDF(${index})">تصدير</button>
+          </td>
+        `;
+        fileList.appendChild(row);
+      });
+    }
+
+    // حذف ملف
+    function deleteFile(index) {
+      const files = JSON.parse(localStorage.getItem('files')) || [];
+      files.splice(index, 1);
+      localStorage.setItem('files', JSON.stringify(files));
+      loadFiles();
+    }
+
+    // تصدير ملف إلى PDF
+    function exportFileToPDF(index) {
+      const files = JSON.parse(localStorage.getItem('files')) || [];
+      const file = files[index];
+      const doc = new jsPDF();
+      doc.text(`اسم الملف: ${file.name}`, 10, 10);
+      doc.text(`حالة الملف: ${file.status}`, 10, 20);
+      doc.save(`${file.name}.pdf`);
+    }
+
+    // تحميل الطلبات المقدمة
+    function loadRequests() {
+      const requests = JSON.parse(localStorage.getItem('requests')) || [];
+      const requestList = document.getElementById('requestList');
+      requestList.innerHTML = '';
+      requests.forEach(request => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${request.id}</td>
+          <td>${request.status}</td>
+          <td>${request.date}</td>
+        `;
+        requestList.appendChild(row);
+      });
+    }
+
     // التهيئة الأولية عند تحميل الصفحة
     window.addEventListener('load', () => {
       updateDateTime();
       setInterval(updateDateTime, 60000);
     });
   </script>
+</body>
+</html>
